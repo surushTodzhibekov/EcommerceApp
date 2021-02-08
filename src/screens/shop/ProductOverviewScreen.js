@@ -50,8 +50,19 @@ const styles = StyleSheet.create({
 
 export const screenOptions = (props) => {
   return {
-    title: props.route.params.categoryTitle,
+    title: props.route.params.productTitle,
     borderBottomColor: 'transparent',
+    headerLeft: () => (
+      <HeaderButtons HeaderButtonComponent={HeaderButton}>
+        <Item
+          title="Menu"
+          iconName={Platform.OS === 'android' ? 'menu' : 'ios-menu'}
+          onPress={() => {
+            props.navigation.toggleDrawer();
+          }}
+        />
+      </HeaderButtons>
+    ),
     headerRight: () => (
       <HeaderButtons HeaderButtonComponent={HeaderButton}>
         <Item
